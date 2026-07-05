@@ -39,4 +39,3 @@ Wasfa App is a Streamlit-based application that allows users to store, manage, a
 
 2. Run the application:
   - streamlit run Fatema_Recipe.py
-1. Install required libraries:
