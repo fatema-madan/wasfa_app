@@ -24,6 +24,15 @@ Wasfa App is a Streamlit-based application that allows users to store, manage, a
 
 ---
 
+## 🧠 Project Structure & Files
+
+- **Fatema_Recipe.py** → Main Streamlit application (UI + user interaction)
+- **helper.py** → Backend functions (add, search, sort, random recipe, etc.)
+- **recipes.csv** → Stores all recipe data
+- **history.txt** → Stores cooking history (recipes viewed by user)
+
+---
+
 ## Technologies Used
 - Python
 - Streamlit
