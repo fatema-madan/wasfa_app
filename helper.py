@@ -34,54 +34,53 @@ def add_recipe(name, ingredients, prep_time, instructions, difficulty, category,
     df.to_csv("recipes.csv", index=False)
 
 
-# Stretch Goal 1: Sort by Rating
-
+# Sort recipes by rating
 def sort_by_rating():
     df = pd.read_csv("recipes.csv")
     return df.sort_values(by="rating", ascending=False)
 
 
-# Stretch Goal 2: Scale Ingredient Quantities
-
+# Scale ingredients
 def scale_ingredients(ingredients, servings):
     items = ingredients.split(",")
 
     scaled = []
+
     for item in items:
         scaled.append(f"{servings} x {item.strip()}")
 
     return ", ".join(scaled)
 
 
-# Stretch Goal 3: Shopping List
-
+# Shopping List with aggregation
 def shopping_list():
     df = pd.read_csv("recipes.csv")
 
-    shopping = []
+    shopping = {}
 
     for ingredients in df["ingredients"]:
-        shopping.extend(ingredients.split(","))
+        for item in ingredients.split(","):
+            item = item.strip()
 
-    return [item.strip() for item in shopping]
+            if item in shopping:
+                shopping[item] += 1
+            else:
+                shopping[item] = 1
+
+    return shopping
 
 
-# Stretch Goal 4: Cooking History
-
+# Save cooking history
 def save_history(recipe_name):
-
-    file = "history.txt"
-
-    with open(file, "a") as f:
+    with open("history.txt", "a") as f:
         f.write(recipe_name + "\n")
 
 
+# View cooking history
 def view_history():
 
-    file = "history.txt"
-
-    if not os.path.exists(file):
+    if not os.path.exists("history.txt"):
         return []
 
-    with open(file, "r") as f:
-        return f.readlines()
+    with open("history.txt", "r") as f:
+        return [line.strip() for line in f.readlines()]
