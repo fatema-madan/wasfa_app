@@ -1,5 +1,7 @@
 # 🍽️ Wasfa App
 
+![Wasfa App Cover](images/wasfa_app.png)
+
 ## 📖 Project Description
 
 Wasfa App is a recipe manager built with Python, Streamlit, and Pandas. It helps users save, organize, and find their favorite recipes in one place. All recipes are stored in a CSV file, making them easy to manage.
@@ -52,12 +54,13 @@ Wasfa App gives users one place to store and manage recipes. Users can add new r
 ```text
 wasfa_app/
 │
-├── Fatema_Recipe.py
-├── helper.py
-├── recipes.csv
-├── history.txt
-└── README.md
-```
+├── Fatema_Recipe.py      # Main Streamlit application
+├── helper.py             # Functions used by the application
+├── recipes.csv           # Stores recipe data
+├── history.txt           # Stores cooking history
+├── images/
+│   └── wasfa_app.png   # Project cover image
+└── README.md             # Project documentation
 
 ---
 
@@ -91,13 +94,13 @@ streamlit run Fatema_Recipe.py
 
 ## 🚀 Live Application
 
-[Streamlit app.
+[Open Wasfa App
 ](https://wasfabh.streamlit.app/)
 ---
 
 ## 🎥 Project Presentation
 
-[Presentation video.
+[Watch Video Presentation
 ](https://youtu.be/DYY7xLpdqCI?si=Si7BVF7hB8bnLbMt)
 ---
 
