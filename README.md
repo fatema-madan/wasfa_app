@@ -91,13 +91,13 @@ streamlit run Fatema_Recipe.py
 
 ## 🚀 Live Application
 
-[Add your Streamlit app link here.
+[Streamlit app.
 ](https://wasfabh.streamlit.app/)
 ---
 
 ## 🎥 Project Presentation
 
-[Add your presentation video link here.
+[Presentation video.
 ](https://youtu.be/DYY7xLpdqCI?si=Si7BVF7hB8bnLbMt)
 ---
 
