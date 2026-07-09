@@ -1,56 +1,120 @@
 # 🍽️ Wasfa App
 
-## Problem Statement
-Many people find it difficult to organize and manage their favorite recipes in one place. Recipes are often scattered across notes, apps, or paper, making them hard to access and search.
+## 📖 Project Description
+
+Wasfa App is a recipe manager built with Python, Streamlit, and Pandas. It helps users save, organize, and find their favorite recipes in one place. All recipes are stored in a CSV file, making them easy to manage.
 
 ---
 
-## Solution
-Wasfa App is a Streamlit-based application that allows users to store, manage, and explore recipes easily using a CSV file.
+## ❗ Problem Statement
+
+Many people keep their recipes in different places like notebooks, paper, or phone apps. This makes it hard to find and manage recipes.
 
 ---
 
-## Features
-- Add new recipes to the collection  
-- Search recipes by ingredient  
-- View all recipes  
-- View a random recipe suggestion  
-- Categorize recipes (Breakfast, Lunch, Dinner, Dessert)  
-- Rate recipes and manage ratings  
-- Sort recipes by rating  
-- Scale ingredient quantities based on servings  
-- Generate a shopping list from recipes  
-- Track cooking history of viewed recipes
+## 💡 Solution
+
+Wasfa App gives users one place to store and manage recipes. Users can add new recipes, search by ingredient, view all recipes, and get a random recipe suggestion.
 
 ---
 
-## Project Structure & Files
+## ✨ Features
 
-- **Fatema_Recipe.py** → Main Streamlit application (UI + user interaction)
-- **helper.py** → Backend functions (add, search, sort, random recipe, etc.)
-- **recipes.csv** → Stores all recipe data
-- **history.txt** → Stores cooking history (recipes viewed by user)
+### Main Features
 
----
+* Add a new recipe.
+* Search recipes by ingredient.
+* View all recipes.
+* Get a random recipe.
 
-## Technologies Used
-- Python
-- Streamlit
-- Pandas
-- CSV file storage
+### Extra Features
 
----
-
-## How to Run
-
-1. Install required libraries:
-  - pip install streamlit pandas
-
-2. Run the application:
-  - streamlit run Fatema_Recipe.py
+* Categorize recipes (Breakfast, Lunch, Dinner, Dessert).
+* Rate recipes.
+* Sort recipes by rating.
+* Scale ingredients based on the number of servings.
+* Create a shopping list.
+* Save cooking history.
 
 ---
 
-## Try the application online
+## 🛠️ Tools & Technologies
 
-[Wasfa App](https://wasfabh.streamlit.app/)
+* Python
+* Streamlit
+* Pandas
+* CSV File
+
+---
+
+## 📂 Project Structure
+
+```text
+wasfa_app/
+│
+├── Fatema_Recipe.py
+├── helper.py
+├── recipes.csv
+├── history.txt
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/fatema-madan/wasfa_app.git
+```
+
+2. Go to the project folder.
+
+```bash
+cd wasfa_app
+```
+
+3. Install the required libraries.
+
+```bash
+pip install streamlit pandas
+```
+
+4. Run the app.
+
+```bash
+streamlit run Fatema_Recipe.py
+```
+
+---
+
+## 🚀 Live Application
+
+[Add your Streamlit app link here.
+](https://wasfabh.streamlit.app/)
+---
+
+## 🎥 Project Presentation
+
+[Add your presentation video link here.
+](https://youtu.be/DYY7xLpdqCI?si=Si7BVF7hB8bnLbMt)
+---
+
+## 🚧 Challenges
+
+* Making the ingredient scaling feature work correctly.
+* Managing recipe data using a CSV file.
+* Creating the shopping list.
+* Saving cooking history.
+
+---
+
+## 🔮 Future Improvements
+
+* Improve the ingredient scaling feature.
+* Combine repeated ingredients in the shopping list.
+* Let users edit and delete recipes.
+* Add recipe images.
+* Save data in a database instead of a CSV file.
+
