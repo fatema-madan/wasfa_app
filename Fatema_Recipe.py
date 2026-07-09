@@ -17,6 +17,7 @@ menu = st.sidebar.selectbox(
     ]
 )
 
+
 if menu == "Add Recipe":
 
     name = st.text_input("Recipe Name")
@@ -38,12 +39,9 @@ if menu == "Add Recipe":
 
     if st.button("Add Recipe"):
 
-        if (
-            name.strip() == ""
-            or ingredients.strip() == ""
-            or instructions.strip() == ""
-        ):
+        if name.strip() == "" or ingredients.strip() == "" or instructions.strip() == "":
             st.error("Please fill in all required fields.")
+
         else:
             h.add_recipe(
                 name,
@@ -58,12 +56,14 @@ if menu == "Add Recipe":
             st.success("Recipe added successfully 🎉")
             st.balloons()
 
+
 elif menu == "View Recipes":
 
     recipes = h.view_recipes()
 
     if len(recipes) == 0:
         st.warning("No recipes found.")
+
     else:
         for _, row in recipes.iterrows():
 
@@ -75,16 +75,25 @@ elif menu == "View Recipes":
                 st.write(f"🔥 Difficulty: {row['difficulty']}")
                 st.write(f"🍴 Category: {row['category']}")
                 st.write(f"⭐ Rating: {'⭐' * int(row['rating'])}")
+
+                if st.button(f"I cooked {row['name']} 🍽️"):
+                    h.save_history(row['name'])
+                    st.success("Added to cooking history!")
+
+
 elif menu == "Search Recipe":
 
     ingredient = st.text_input("Enter ingredient")
 
     if ingredient:
+
         results = h.search_recipe(ingredient)
 
         if len(results) == 0:
             st.warning("No recipes found with this ingredient.")
+
         else:
+
             for _, row in results.iterrows():
 
                 with st.expander(f"🍽️ {row['name']}"):
@@ -96,6 +105,9 @@ elif menu == "Search Recipe":
                     st.write(f"🍴 Category: {row['category']}")
                     st.write(f"⭐ Rating: {'⭐' * int(row['rating'])}")
 
+                    if st.button(f"I cooked {row['name']} 🍽️"):
+                        h.save_history(row['name'])
+                        st.success("Added to cooking history!")
 
 
 elif menu == "Random Recipe":
@@ -106,11 +118,10 @@ elif menu == "Random Recipe":
 
         recipe = h.random_recipe().iloc[0]
 
-        h.save_history(recipe["name"])
-
         st.balloons()
 
         st.subheader(recipe["name"])
+
         st.write("🧂 Ingredients:", recipe["ingredients"])
         st.write("⏱️ Prep Time:", recipe["prep_time"], "min")
         st.write("📖 Instructions:", recipe["instructions"])
@@ -118,24 +129,38 @@ elif menu == "Random Recipe":
         st.write("🍴 Category:", recipe["category"])
         st.write("⭐ Rating:", "⭐" * int(recipe["rating"]))
 
-        servings = st.number_input("Number of Servings", min_value=1, value=1)
+
+        servings = st.number_input(
+            "Number of Servings",
+            min_value=1,
+            value=1
+        )
 
         st.write(
             "🧮 Scaled Ingredients:",
-            h.scale_ingredients(recipe["ingredients"], servings)
+            h.scale_ingredients(
+                recipe["ingredients"],
+                servings
+            )
         )
+
+
+        if st.button("I cooked this recipe 🍽️"):
+            h.save_history(recipe["name"])
+            st.success("Added to cooking history!")
+
 
     else:
         st.warning("No recipes yet. Add one first!")
-
 
 
 elif menu == "Sort by Rating":
 
     st.subheader("⭐ Recipes Sorted by Rating")
 
-    st.dataframe(h.sort_by_rating())
-
+    st.dataframe(
+        h.sort_by_rating()
+    )
 
 
 elif menu == "Shopping List":
@@ -144,9 +169,13 @@ elif menu == "Shopping List":
 
     items = h.shopping_list()
 
-    for item in items:
-        st.write("•", item.strip())
+    if len(items) == 0:
+        st.info("No ingredients found.")
 
+    else:
+
+        for item, quantity in items.items():
+            st.write(f"• {item}: {quantity}")
 
 
 elif menu == "Cooking History":
@@ -157,6 +186,7 @@ elif menu == "Cooking History":
 
     if len(history) == 0:
         st.info("No cooking history yet.")
+
     else:
         for item in history:
-            st.write("🍽️", item.strip())
+            st.write("🍽️", item)
