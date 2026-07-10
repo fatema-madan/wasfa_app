@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from collections import Counter
 
 
 def view_recipes():
@@ -49,38 +50,43 @@ def scale_ingredients(ingredients, servings):
     for item in items:
         item = item.strip()
 
-        parts = item.split(" ", 1)
-
-        if parts[0].isdigit():
-            amount = int(parts[0])
-            name = parts[1]
-
-            new_amount = amount * servings
-            scaled.append(f"{new_amount} {name}")
-        else:
+        if servings == 1:
             scaled.append(item)
+        else:
+            scaled.append(f"{servings} x {item}")
 
     return ", ".join(scaled)
-    
 
-# Stretch Goal 3: Shopping List
+
+# Stretch Goal 3: Shopping List (Aggregated)
 def shopping_list():
     df = pd.read_csv("data/recipes.csv")
 
     shopping = []
 
     for ingredients in df["ingredients"]:
-        shopping.extend(ingredients.split(","))
+        shopping.extend(
+            [item.strip() for item in ingredients.split(",")]
+        )
 
-    return [item.strip() for item in shopping]
+    return Counter(shopping)
 
 
-# Stretch Goal 4: Cooking History
+# Stretch Goal 4: Cooking History (No Duplicates)
 def save_history(recipe_name):
     file = "data/history.txt"
 
-    with open(file, "a") as f:
-        f.write(recipe_name + "\n")
+    os.makedirs("data", exist_ok=True)
+
+    if os.path.exists(file):
+        with open(file, "r") as f:
+            history = f.read().splitlines()
+    else:
+        history = []
+
+    if recipe_name not in history:
+        with open(file, "a") as f:
+            f.write(recipe_name + "\n")
 
 
 def view_history():
