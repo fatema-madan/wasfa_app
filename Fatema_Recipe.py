@@ -76,7 +76,10 @@ elif menu == "View Recipes":
                 st.write(f"🍴 Category: {row['category']}")
                 st.write(f"⭐ Rating: {'⭐' * int(row['rating'])}")
 
-                if st.button(f"I cooked {row['name']} 🍽️"):
+                if st.button(
+                    f"I cooked {row['name']} 🍽️",
+                    key=f"view_{row['name']}"
+                ):
                     h.save_history(row['name'])
                     st.success("Added to cooking history!")
 
@@ -105,7 +108,10 @@ elif menu == "Search Recipe":
                     st.write(f"🍴 Category: {row['category']}")
                     st.write(f"⭐ Rating: {'⭐' * int(row['rating'])}")
 
-                    if st.button(f"I cooked {row['name']} 🍽️"):
+                    if st.button(
+                        f"I cooked {row['name']} 🍽️",
+                        key=f"search_{row['name']}"
+                    ):
                         h.save_history(row['name'])
                         st.success("Added to cooking history!")
 
@@ -145,7 +151,10 @@ elif menu == "Random Recipe":
         )
 
 
-        if st.button("I cooked this recipe 🍽️"):
+        if st.button(
+            "I cooked this recipe 🍽️",
+            key="random_recipe_button"
+        ):
             h.save_history(recipe["name"])
             st.success("Added to cooking history!")
 
