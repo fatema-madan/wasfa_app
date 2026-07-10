@@ -3,22 +3,22 @@ import os
 
 
 def view_recipes():
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
     return df
 
 
 def random_recipe():
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
     return df.sample()
 
 
 def search_recipe(ingredient):
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
     return df[df["ingredients"].str.contains(ingredient, case=False, na=False)]
 
 
 def add_recipe(name, ingredients, prep_time, instructions, difficulty, category, rating):
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
 
     new_row = {
         "name": name,
@@ -31,56 +31,51 @@ def add_recipe(name, ingredients, prep_time, instructions, difficulty, category,
     }
 
     df.loc[len(df)] = new_row
-    df.to_csv("recipes.csv", index=False)
+    df.to_csv("data/recipes.csv", index=False)
 
 
-# Sort recipes by rating
+# Stretch Goal 1: Sort by Rating
 def sort_by_rating():
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
     return df.sort_values(by="rating", ascending=False)
 
 
-# Scale ingredients
+# Stretch Goal 2: Scale Ingredient Quantities
 def scale_ingredients(ingredients, servings):
     items = ingredients.split(",")
 
     scaled = []
-
     for item in items:
         scaled.append(f"{servings} x {item.strip()}")
 
     return ", ".join(scaled)
 
 
-# Shopping List with aggregation
+# Stretch Goal 3: Shopping List
 def shopping_list():
-    df = pd.read_csv("recipes.csv")
+    df = pd.read_csv("data/recipes.csv")
 
-    shopping = {}
+    shopping = []
 
     for ingredients in df["ingredients"]:
-        for item in ingredients.split(","):
-            item = item.strip()
+        shopping.extend(ingredients.split(","))
 
-            if item in shopping:
-                shopping[item] += 1
-            else:
-                shopping[item] = 1
-
-    return shopping
+    return [item.strip() for item in shopping]
 
 
-# Save cooking history
+# Stretch Goal 4: Cooking History
 def save_history(recipe_name):
-    with open("history.txt", "a") as f:
+    file = "data/history.txt"
+
+    with open(file, "a") as f:
         f.write(recipe_name + "\n")
 
 
-# View cooking history
 def view_history():
+    file = "data/history.txt"
 
-    if not os.path.exists("history.txt"):
+    if not os.path.exists(file):
         return []
 
-    with open("history.txt", "r") as f:
-        return [line.strip() for line in f.readlines()]
+    with open(file, "r") as f:
+        return f.readlines()
