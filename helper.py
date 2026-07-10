@@ -50,13 +50,19 @@ def scale_ingredients(ingredients, servings):
     for item in items:
         item = item.strip()
 
-        if servings == 1:
-            scaled.append(item)
+        parts = item.split(" ", 1)
+
+        if parts[0].isdigit():
+            quantity = int(parts[0])
+            ingredient = parts[1]
+
+            scaled.append(f"{quantity * servings} {ingredient}")
+
         else:
-            scaled.append(f"{servings} x {item}")
+            scaled.append(item)
 
     return ", ".join(scaled)
-
+    
 
 # Stretch Goal 3: Shopping List (Aggregated)
 def shopping_list():
