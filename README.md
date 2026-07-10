@@ -24,28 +24,28 @@ Wasfa App gives users one place to store and manage recipes. Users can add new r
 
 ### Main Features
 
-* Add a new recipe.
-* Search recipes by ingredient.
-* View all recipes.
-* Get a random recipe.
+- Add a new recipe.
+- Search recipes by ingredient.
+- View all recipes.
+- Get a random recipe.
 
 ### Extra Features
 
-* Categorize recipes (Breakfast, Lunch, Dinner, Dessert).
-* Rate recipes.
-* Sort recipes by rating.
-* Scale ingredients based on the number of servings.
-* Create a shopping list.
-* Save cooking history.
+- Categorize recipes (Breakfast, Lunch, Dinner, Dessert).
+- Rate recipes.
+- Sort recipes by rating.
+- Scale ingredients based on the number of servings.
+- Create a shopping list.
+- Save cooking history.
 
 ---
 
 ## 🛠️ Tools & Technologies
 
-* Python
-* Streamlit
-* Pandas
-* CSV File
+- Python
+- Streamlit
+- Pandas
+- CSV File
 
 ---
 
@@ -59,8 +59,9 @@ wasfa_app/
 ├── recipes.csv           # Stores recipe data
 ├── history.txt           # Stores cooking history
 ├── images/
-│   └── wasfa_app.png   # Project cover image
+│   └── wasfa_app.png     # Project cover image
 └── README.md             # Project documentation
+```
 
 ---
 
@@ -84,7 +85,7 @@ cd wasfa_app
 pip install streamlit pandas
 ```
 
-4. Run the app.
+4. Run the application.
 
 ```bash
 streamlit run Fatema_Recipe.py
@@ -94,30 +95,29 @@ streamlit run Fatema_Recipe.py
 
 ## 🚀 Live Application
 
-[Open Wasfa App
-](https://wasfabh.streamlit.app/)
+[Open Wasfa App](https://wasfabh.streamlit.app/)
+
 ---
 
 ## 🎥 Project Presentation
 
-[Watch Video Presentation
-](https://youtu.be/DYY7xLpdqCI?si=Si7BVF7hB8bnLbMt)
+[Watch Video Presentation](https://youtu.be/DYY7xLpdqCI?si=Si7BVF7hB8bnLbMt)
+
 ---
 
 ## 🚧 Challenges
 
-* Making the ingredient scaling feature work correctly.
-* Managing recipe data using a CSV file.
-* Creating the shopping list.
-* Saving cooking history.
+- Making the ingredient scaling feature work correctly.
+- Managing recipe data using a CSV file.
+- Creating the shopping list.
+- Saving cooking history.
 
 ---
 
 ## 🔮 Future Improvements
 
-* Improve the ingredient scaling feature.
-* Combine repeated ingredients in the shopping list.
-* Let users edit and delete recipes.
-* Add recipe images.
-* Save data in a database instead of a CSV file.
-
+- Improve the ingredient scaling feature.
+- Combine repeated ingredients in the shopping list.
+- Let users edit and delete recipes.
+- Add recipe images.
+- Save data in a database instead of a CSV file.
