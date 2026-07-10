@@ -86,7 +86,7 @@ def save_history(recipe_name):
 
     with open(file, "a") as f:
         f.write(recipe_name + "\n")
-
+        
 
 def view_history():
     file = "data/history.txt"
