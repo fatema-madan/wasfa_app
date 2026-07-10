@@ -45,11 +45,17 @@ def scale_ingredients(ingredients, servings):
     items = ingredients.split(",")
 
     scaled = []
+
     for item in items:
-        scaled.append(f"{servings} x {item.strip()}")
+        item = item.strip()
+
+        if servings == 1:
+            scaled.append(item)
+        else:
+            scaled.append(f"{servings} x {item}")
 
     return ", ".join(scaled)
-
+    
 
 # Stretch Goal 3: Shopping List
 def shopping_list():
