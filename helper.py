@@ -62,7 +62,7 @@ def scale_ingredients(ingredients, servings):
             scaled.append(item)
 
     return ", ".join(scaled)
-    
+
 
 # Stretch Goal 3: Shopping List (Aggregated)
 def shopping_list():
@@ -84,9 +84,18 @@ def save_history(recipe_name):
 
     os.makedirs("data", exist_ok=True)
 
-    with open(file, "a") as f:
-        f.write(recipe_name + "\n")
-        
+    recipe_name = str(recipe_name).strip()
+
+    if os.path.exists(file):
+        with open(file, "r") as f:
+            history = [line.strip() for line in f.readlines()]
+    else:
+        history = []
+
+    if recipe_name.lower() not in [item.lower() for item in history]:
+        with open(file, "a") as f:
+            f.write(recipe_name + "\n")
+
 
 def view_history():
     file = "data/history.txt"
