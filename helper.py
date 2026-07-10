@@ -84,15 +84,8 @@ def save_history(recipe_name):
 
     os.makedirs("data", exist_ok=True)
 
-    if os.path.exists(file):
-        with open(file, "r") as f:
-            history = f.read().splitlines()
-    else:
-        history = []
-
-    if recipe_name not in history:
-        with open(file, "a") as f:
-            f.write(recipe_name + "\n")
+    with open(file, "a") as f:
+        f.write(recipe_name + "\n")
 
 
 def view_history():
