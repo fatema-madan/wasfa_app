@@ -49,10 +49,16 @@ def scale_ingredients(ingredients, servings):
     for item in items:
         item = item.strip()
 
-        if servings == 1:
-            scaled.append(item)
+        parts = item.split(" ", 1)
+
+        if parts[0].isdigit():
+            amount = int(parts[0])
+            name = parts[1]
+
+            new_amount = amount * servings
+            scaled.append(f"{new_amount} {name}")
         else:
-            scaled.append(f"{servings} x {item}")
+            scaled.append(item)
 
     return ", ".join(scaled)
     
